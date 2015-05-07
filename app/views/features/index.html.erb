@@ -1,0 +1,24 @@
+<% content_for :content do %>
+  <section>
+    <div class="container">
+      <h1>Listing Features - <%= link_to 'New Feature', new_feature_path, class: 'btn btn-primary btn-xs'%></h1>
+      <%= generate_table(
+        striped: true,
+        data_table: true,
+        header: [
+          'Name', 'Project', 'Min days', 'Max days', '', '', ''
+          ],
+        content: @features.map do |feature|
+          [
+            feature.name,
+            feature.project,
+            feature.min_days,
+            feature.max_days,
+            link_to('Show', feature_path(feature)),
+            link_to('Edit', edit_feature_path(feature)),
+            link_to('Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' })
+          ]
+        end) %>
+    </div>
+  </section>
+<% end %>

@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :features
+
+  resources :projects
+
   resource :user
   resources :user_sessions, only: [:create]
   get 'login', to: 'user_sessions#new', as: 'login'

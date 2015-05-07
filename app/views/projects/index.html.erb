@@ -1,0 +1,22 @@
+<% content_for :content do %>
+  <section>
+    <div class="container">
+      <h1>Listing Projects - <%= link_to 'New Project', new_project_path, class: 'btn btn-primary btn-xs'%></h1>
+      <%= generate_table(
+        striped: true,
+        data_table: true,
+        header: [
+          'Name', 'Color', '', '', ''
+          ],
+        content: @projects.map do |project|
+          [
+            project.name,
+            project.color,
+            link_to('Show', project_path(project)),
+            link_to('Edit', edit_project_path(project)),
+            link_to('Destroy', project, method: :delete, data: { confirm: 'Are you sure?' })
+          ]
+        end) %>
+    </div>
+  </section>
+<% end %>

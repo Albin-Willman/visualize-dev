@@ -1,0 +1,17 @@
+<% content_for :content do %>
+  <section>
+    <div class="container">
+        <p>
+        <strong>Name:</strong>
+        <%= @project.name %>
+      </p>
+        <p>
+        <strong>Color:</strong>
+        <%= @project.color %>
+      </p>
+  
+      <%= link_to 'Back', projects_path, class: 'btn btn-primary' %>
+      <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary' %>
+    </div>
+  </section>
+<% end %>

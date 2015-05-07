@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507210259) do
+ActiveRecord::Schema.define(version: 20150507211600) do
+
+  create_table "features", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "project_id", limit: 4
+    t.integer  "min_days",   limit: 4
+    t.integer  "max_days",   limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "features", ["project_id"], name: "index_features_on_project_id", using: :btree
+
+  create_table "projects", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.integer  "color",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",             limit: 255
@@ -22,4 +40,5 @@ ActiveRecord::Schema.define(version: 20150507210259) do
     t.datetime "updated_at",                    null: false
   end
 
+  add_foreign_key "features", "projects"
 end
