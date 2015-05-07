@@ -3,7 +3,7 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :color %>
+    <%= f.input :color, collection: Project.colors.keys.zip(Project.colors.keys) %>
   </div>
 
   <div class="form-actions">

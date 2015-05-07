@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :features
 
-  resources :projects
+  resources :projects do
+    resources :features, except: [:index, :show]
+  end
 
   resource :user
   resources :user_sessions, only: [:create]

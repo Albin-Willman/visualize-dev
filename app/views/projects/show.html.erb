@@ -1,15 +1,27 @@
 <% content_for :content do %>
   <section>
     <div class="container">
-        <p>
-        <strong>Name:</strong>
+      <h1>
         <%= @project.name %>
-      </p>
-        <p>
-        <strong>Color:</strong>
-        <%= @project.color %>
-      </p>
-  
+      </h1>
+
+      <h2>Listing Features - <%= link_to 'New Feature', new_project_feature_path(@project), class: 'btn btn-primary btn-xs'%></h2>
+      <%= generate_table(
+        striped: true,
+        data_table: true,
+        header: [
+          'Name', 'Min days', 'Max days', '', ''
+          ],
+        content: @features.map do |feature|
+          [
+            feature.name,
+            feature.min_days,
+            feature.max_days,
+            link_to('Edit', edit_project_feature_path(@project, feature)),
+            link_to('Destroy', project_feature_path(@project, feature), method: :delete, data: { confirm: 'Are you sure?' })
+          ]
+        end) %>
+      
       <%= link_to 'Back', projects_path, class: 'btn btn-primary' %>
       <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary' %>
     </div>

@@ -6,12 +6,13 @@
         striped: true,
         data_table: true,
         header: [
-          'Name', 'Color', '', '', ''
+          'Name', 'Color', 'Expected time', '', '', ''
           ],
         content: @projects.map do |project|
           [
             project.name,
             project.color,
+            project.expected_time,
             link_to('Show', project_path(project)),
             link_to('Edit', edit_project_path(project)),
             link_to('Destroy', project, method: :delete, data: { confirm: 'Are you sure?' })
