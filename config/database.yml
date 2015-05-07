@@ -1,0 +1,27 @@
+<% db_socket = ENV['DEV_MYSQL_SOCKET'] || '/tmp/mysql.sock' %>
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  pool: 5
+  password: INQ316zhwLaMZ0m7h3MZTLGc
+  socket: <%= db_socket %>
+
+development:
+  <<: *default
+  username: root
+  database: TimeVisualization_development
+  password:
+
+test:
+  <<: *default
+  username: root
+  database: TimeVisualization_test
+  password:
+
+# production:
+#   <<: *default
+#   database: TimeVisualization_production
+#   username: TimeVisualization
+

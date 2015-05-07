@@ -1,0 +1,21 @@
+<%% content_for :content do %>
+  <section>
+    <div class="container">
+      <h1>Listing <%= plural_table_name.capitalize %> - <%%= link_to 'New <%= class_name %>', new_<%= singular_table_name %>_path, class: 'btn btn-primary btn-xs'%></h1>
+      <%%= generate_table(
+        striped: true,
+        data_table: true,
+        header: [
+          <%= (attributes.map(&:human_name) + ['', '', '']).map { |col| "'#{col}'" }.join(', ') %>
+          ],
+        content: @<%= plural_table_name %>.map do |<%= singular_table_name %>|
+          [<% attributes.each do |attribute| %>
+            <%= "#{singular_table_name}.#{attribute.name}" %>,<% end %>
+            link_to('Show', <%= singular_table_name %>_path(<%= singular_table_name %>)),
+            link_to('Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)),
+            link_to('Destroy', <%= singular_table_name %>, method: :delete, data: { confirm: 'Are you sure?' })
+          ]
+        end) %>
+    </div>
+  </section>
+<%% end %>
