@@ -1,5 +1,3 @@
-== README
-
 ## Description
 
 This is a small rails app to visualize estimated time of completion of a multiple development projects.
