@@ -22,7 +22,7 @@ class SettingsPresenter
   end
 
   def features
-    @features ||= Feature.where(project_id: projects.map(&:id)).with_project
+    @features ||= Feature.where(project_id: project_ids).estimated.with_project
   end
 
   def efficiency
