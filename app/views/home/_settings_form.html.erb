@@ -1,0 +1,15 @@
+<%= simple_form_for(@settings, url: request.path, method: :get) do |f| %>
+  <div class="row">
+    <div class="col-md-3">
+      <%= f.input :developers %>
+    </div>
+    <div class="col-md-3">
+      <%= f.input :project_ids, collection: @all_projects.map { |p| [p.name, p.id] }, input_html: { multiple: true, class: 'js-chosen' } %>
+    </div>
+
+    <div class="col-md-3">
+      <%= submit_tag 'Set', class: 'btn btn-default' %>
+    </div>
+  </div>
+  
+<% end %>

@@ -1,8 +1,14 @@
 <% content_for :content do %>
   <div class="container">
     <section>
-      <h2>Time line</h2>
-      <%= print_dev_track(@dev_presenter) %>
+      <h2>Settings</h2>
+      <%= render 'home/settings_form' %>
+    </section>
+    <section>
+      <h2>Time lines</h2>
+      <% @manager.developers.each do |dev| %>
+        <%= print_dev_track(dev) %>
+      <% end %>
     </section>
     <section>
       <h2>Projects</h2>
