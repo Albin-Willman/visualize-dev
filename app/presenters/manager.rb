@@ -2,7 +2,7 @@ class Manager
   def initialize(nbr_developers, efficiency = 0.75)
     @developers = []
     nbr_developers.times do
-      @developers << DeveloperPresenter.new(efficiency)
+      @developers << Developer.new(efficiency)
     end
   end
 

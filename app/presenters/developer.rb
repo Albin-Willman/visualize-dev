@@ -1,4 +1,4 @@
-class DeveloperPresenter
+class Developer
 
   def initialize(efficiency = 0.75)
     @efficiency = efficiency.to_f

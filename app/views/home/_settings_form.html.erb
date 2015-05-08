@@ -4,8 +4,12 @@
       <%= f.input :developers %>
     </div>
     <div class="col-md-3">
+      <%= f.input :parallell_projects %>
+    </div>
+    <div class="col-md-3">
       <%= f.input :project_ids, collection: @all_projects.map { |p| [p.name, p.id] }, input_html: { multiple: true, class: 'js-chosen' } %>
     </div>
+
 
     <div class="col-md-3">
       <%= submit_tag 'Set', class: 'btn btn-default' %>
