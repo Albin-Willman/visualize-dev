@@ -5,6 +5,7 @@
 
 $(document).ready(function(){
   $('.js-datatable').DataTable();
+  $('.js-datepicker').datepicker({format: 'yyyy-mm-dd'});
   $.each($('.js-chosen'), function(){ initChosen($(this)); });
 });
 

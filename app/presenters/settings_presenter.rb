@@ -7,14 +7,16 @@ class SettingsPresenter
     :developers,
     :projects,
     :project_ids,
-    :parallell_projects
+    :parallell_projects,
+    :start_date
   ]
 
   attr_accessor(*ATTRIBUTES)
 
   def initialize(params = {})
     @parallell_projects = params[:parallell_projects].blank? ? 2 : params[:parallell_projects].to_i
-    @developers = params[:developers].blank? ? 2 : params[:developers].to_i
+    @developers  = params[:developers].blank? ? 2 : params[:developers].to_i
+    @start_date  = params[:start_date].blank? ? Date.today : Date.parse(params[:start_date])
     @project_ids = params[:project_ids] && params[:project_ids].reject!(&:blank?)
     if @project_ids && @project_ids.length > 0
       @projects = Project.where(id: params[:project_ids])

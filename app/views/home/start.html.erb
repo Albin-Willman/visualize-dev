@@ -7,7 +7,7 @@
     <section>
       <h2>Time lines</h2>
       <% @manager.developers.each do |dev| %>
-        <%= print_dev_track(dev) %>
+        <%= print_dev_track(dev, @settings.start_date) %>
       <% end %>
     </section>
     <section>
